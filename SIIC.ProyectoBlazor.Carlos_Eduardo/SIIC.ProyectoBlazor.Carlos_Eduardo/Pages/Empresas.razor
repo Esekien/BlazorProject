@@ -1,0 +1,73 @@
+﻿@page "/empresas"
+
+<h3>Empresas</h3>
+
+
+<form>
+    <div class="row">
+        <div class="col">
+            <label>RFC</label>
+            <input type="text" class="form-control" placeholder="RFC" @bind="empresas.rfc">
+        </div>
+        <div class="col">
+            <label>RazonSocial</label>
+            <input type="text" class="form-control" placeholder="razonSocial" @bind="empresas.razonSocial">
+        </div>
+        <div class="col">
+            <label>NombreComercial</label>
+            <input type="text" class="form-control" placeholder="nombreComercial" @bind="empresas.nombreComercial">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label>Direccion</label>
+            <input type="text" class="form-control" placeholder="Direccion" @bind="empresas.direccion">
+        </div>
+        <div class="col">
+            <label>Telefono</label>
+            <input type="text" class="form-control" placeholder="Telefono" @bind="empresas.telefono">
+        </div>
+        <div class="col">
+            <label>Correo</label>
+            <input type="text" class="form-control" placeholder="Correo" @bind="empresas.correo">
+        </div>
+
+    </div>
+    <br />
+    <button type="reset" class="btn btn-primary" @onclick="GuardarEmpresas">Agregar Empresa</button>
+    <button type="reset" class="btn btn-primary" @onclick="ActualizarEmpresas">Actualizar Empresa</button>
+</form>
+
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>idSucursal</th>
+            <th>rfc</th>
+            <th>Razon social</th>
+            <th>Nombre comercial</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+            <th>Operaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in listaempresa)
+        {
+            <tr>
+                <th>@e.id</th>
+                <td>@e.idSucursal</td>
+                <td>@e.rfc</td>
+                <td>@e.razonSocial</td>
+                <td>@e.nombreComercial</td>
+                <td>@e.direccion</td>
+                <td>@e.telefono</td>
+                <td>@e.correo</td>
+                <td><button type="button" class="btn btn-info" @onclick="(()=>EditarEmpresas(e))">Editar <Feather.Blazor.Icons.FeatherEdit Size="20" Color="#ffffff" StrokeWidth="1.8f" /> </button></td>
+                <td><button type="button" class="btn btn-danger" @onclick="(()=>EliminarEmpresas(e))">Eliminar <Feather.Blazor.Icons.FeatherDelete Size="20" Color="#ffffff" StrokeWidth="1.8f" /></button></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,76 @@
+﻿@page "/empleados"
+<br />
+<h3>Empleados</h3>
+<br />
+<br />
+
+<form>
+    <div class="row">
+        <div class="col">
+            <label>RFC</label>
+            <input type="text" class="form-control" placeholder="RFC" @bind="empleado.rfc">
+        </div>
+        <div class="col">
+            <label>Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" @bind="empleado.nombre">
+        </div>
+        <div class="col">
+            <label>Apellidos</label>
+            <input type="text" class="form-control" placeholder="Apellidos" @bind="empleado.apellidos">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label>Direccion</label>
+            <input type="text" class="form-control" placeholder="Direccion" @bind="empleado.direccion">
+        </div>
+        <div class="col">
+            <label>Telefono</label>
+            <input type="text" class="form-control" placeholder="Telefono" @bind="empleado.telefono">
+        </div>
+        <div class="col">
+            <label>Correo</label>
+            <input type="text" class="form-control" placeholder="Correo" @bind="empleado.correo">
+        </div>
+    </div>
+    <br />
+    <button type="reset" class="btn btn-primary" @onclick="GuardarEmpleado">Agregar Empleado</button>
+    <button type="reset" class="btn btn-primary" @onclick="ActualizarEmpleado">Actualizar Empleado</button>
+</form>
+
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>rfc</th>
+            <th>nombre</th>
+            <th>apellidos</th>
+            <th>direccion</th>
+            <th>telefono</th>
+            <th>correo</th>
+            <th>activo</th>
+            <th>idEmpresa</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in listaempleados)
+        {
+            <tr>
+                <td>@e.id</td>
+                <td>@e.rfc</td>
+                <td>@e.nombre</td>
+                <td>@e.apellidos</td>
+                <td>@e.direccion</td>
+                <td>@e.telefono</td>
+                <td>@e.correo</td>
+                <td>@e.activo</td>
+                <td>@e.idEmpresa</td>
+                <td><button type="button" class="btn btn-info" @onclick="(()=>EditarEmpleado(e))">Editar <Feather.Blazor.Icons.FeatherEdit Size="20" Color="#ffffff" StrokeWidth="1.8f" /> </button></td>
+                <td><button type="button" class="btn btn-danger" @onclick="(()=>EliminarEmpleado(e))">Eliminar <Feather.Blazor.Icons.FeatherDelete Size="20" Color="#ffffff" StrokeWidth="1.8f" /></button></td>
+            </tr>
+        }
+    </tbody>
+</table>
